@@ -1,9 +1,11 @@
 package com.didispace.chapter21;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+@Slf4j
 @RestController
 @RequestMapping(value = "/users")     // 通过这里配置使下面的映射都在/users下
 public class UserController {
@@ -19,6 +21,7 @@ public class UserController {
     @GetMapping("/")
     public List<User> getUserList() {
         // 还可以通过@RequestParam从页面中传递参数来进行查询条件或者翻页信息的传递
+        log.info(users.values().toString());
         List<User> r = new ArrayList<User>(users.values());
         return r;
     }
